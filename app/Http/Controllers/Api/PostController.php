@@ -11,7 +11,16 @@ use Illuminate\Http\JsonResponse;
 class PostController extends Controller
 {
 	/**
-	 * Get Post from the database
+	 * Retrieve All Posts from the database
+	 */
+	public function index(): JsonResponse
+	{
+		$posts = Post::all();
+		return response()->json(['posts'=>$posts], 200);
+	}
+
+	/**
+	 * Retrieve Post from the database
 	 */
 	public function get(Post $post): JsonResponse
 	{
