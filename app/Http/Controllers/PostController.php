@@ -60,10 +60,11 @@ class PostController extends Controller
 	 */
 	public function update(UpdatePostRequest $request, Post $post): Response
 	{
-		$post->update([
-			'title' => $request->title,
-			'body'  => $request->body,
-		]);
+		Post::where('id', $post->id)
+			->update([
+				'title' => $request->title,
+				'body'  => $request->body,
+			]);
 		return response(['message'=>'Post Successfuly Updated!'], 200);
 	}
 
@@ -75,7 +76,14 @@ class PostController extends Controller
 		$post->delete();
 		return response(['message'=>'Post Successfuly Deleted!'], 200);
 	}
-}
 
-// EXTRA NOTE
-// Illuminate\Http\RedirectResponse
+	// # [!] NOTE
+	// # If you are Redirecting the type should be: Illuminate\Http\RedirectResponse
+	// # example:
+	//
+	// public function destroy(Post $post): RedirectResponse
+	// {
+	// 	$post->delete();
+	// 	return redirect('posts'); //or return back();
+	// }
+}
