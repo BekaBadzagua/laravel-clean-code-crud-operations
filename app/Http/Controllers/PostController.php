@@ -40,11 +40,8 @@ class PostController extends Controller
 	 */
 	public function store(StorePostRequest $request): Response
 	{
-		Post::create([
-			'title' => $request->title,
-			'body'  => $request->body,
-		]);
-		return response(['message'=>'Post Successfuly Created!'], 200);
+		Post::create($request->validated());
+		return response(['message'=>'Post Successfuly Created!'], 201);
 	}
 
 	/**
@@ -60,11 +57,7 @@ class PostController extends Controller
 	 */
 	public function update(UpdatePostRequest $request, Post $post): Response
 	{
-		Post::where('id', $post->id)
-			->update([
-				'title' => $request->title,
-				'body'  => $request->body,
-			]);
+		$post->update($request->validated());
 		return response(['message'=>'Post Successfuly Updated!'], 200);
 	}
 

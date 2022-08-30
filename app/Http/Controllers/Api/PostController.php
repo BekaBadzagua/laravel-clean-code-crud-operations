@@ -32,11 +32,8 @@ class PostController extends Controller
 	 */
 	public function store(StorePostRequest $request): JsonResponse
 	{
-		Post::create([
-			'title' => $request->title,
-			'body'  => $request->body,
-		]);
-		return response()->json(['message'=>'Post Successfuly Created!'], 200);
+		Post::create($request->validated());
+		return response()->json(['message'=>'Post Successfuly Created!'], 201);
 	}
 
 	/**
@@ -44,10 +41,7 @@ class PostController extends Controller
 	 */
 	public function update(UpdatePostRequest $request, Post $post): JsonResponse
 	{
-		$post->update([
-			'title' => $request->title,
-			'body'  => $request->body,
-		]);
+		$post->update($request->validated());
 		return response()->json(['message'=>'Post Successfuly Updated!'], 200);
 	}
 

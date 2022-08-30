@@ -13,9 +13,10 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-
-Route::get('/posts', [PostController::class, 'index'])->name('posts');
-Route::get('/posts/{post}', [PostController::class, 'get'])->name('posts.get');
-Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
-Route::patch('/posts/{post}', [PostController::class, 'update'])->name('posts.update');
-Route::delete('/posts/{post}', [PostController::class, 'destroy'])->name('posts.destroy');
+Route::controller(PostController::class)->group(function () {
+	Route::get('/posts', 'index')->name('posts.index');
+	Route::get('/posts/{post}', 'get')->name('posts.get');
+	Route::post('/posts', 'store')->name('posts.store');
+	Route::patch('/posts/{post}', 'update')->name('posts.update');
+	Route::delete('/posts/{post}', 'destroy')->name('posts.destroy');
+});
