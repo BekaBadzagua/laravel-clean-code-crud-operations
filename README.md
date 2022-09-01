@@ -22,7 +22,3 @@ and according to that There are 4 main files:
 Also There are two custom requests for data validation. see more on [Laravel Documentation - Form Request Validation](https://laravel.com/docs/9.x/validation#form-request-validation)
 * app/Http/Requests/StorePostRequest.php
 * app/Http/Requests/UpdatePostRequest.php
-
-```
-asdasasd
-```
