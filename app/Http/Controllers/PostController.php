@@ -24,6 +24,8 @@ class PostController extends Controller
 	 */
 	public function show(Post $post): View
 	{
+		// [!] Always write this kind of routes using Route::view() method.
+		// in this app it's left like this only for learning purposes
 		return view('posts-show', ['post' => $post]);
 	}
 
@@ -32,6 +34,8 @@ class PostController extends Controller
 	 */
 	public function create(): View
 	{
+		// [!] Always write this kind of routes using Route::view() method.
+		// in this app it's left like this only for learning purposes
 		return view('posts-create');
 	}
 
@@ -49,6 +53,8 @@ class PostController extends Controller
 	 */
 	public function edit(Post $post): View
 	{
+		// [!] Always write this kind of routes using Route::view() method.
+		// in this app it's left like this only for learning purposes
 		return view('posts-edit', ['post' => $post]);
 	}
 
