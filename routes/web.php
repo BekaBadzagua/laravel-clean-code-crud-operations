@@ -19,6 +19,6 @@ Route::controller(PostController::class)->group(function () {
 	Route::get('/posts/create', 'create')->name('posts.create');
 	Route::post('/posts', 'store')->name('posts.store');
 	Route::get('/posts/{post}/edit', 'edit')->name('posts.edit');
-	Route::patch('/posts/{post}', 'update')->name('posts.update');
+	Route::put('/posts/{post}', 'update')->name('posts.update');
 	Route::delete('/posts/{post}', 'destroy')->name('posts.destroy');
 });
