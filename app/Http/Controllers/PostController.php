@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
 use App\Models\Post;
-use Illuminate\Http\Response;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 
 class PostController extends Controller
@@ -38,10 +38,10 @@ class PostController extends Controller
 	/**
 	 * Store Post in database
 	 */
-	public function store(StorePostRequest $request): Response
+	public function store(StorePostRequest $request): RedirectResponse
 	{
 		Post::create($request->validated());
-		return response(status: 201);
+		return redirect()->route('posts.index');
 	}
 
 	/**
@@ -55,28 +55,18 @@ class PostController extends Controller
 	/**
 	 * Update Post in database
 	 */
-	public function update(UpdatePostRequest $request, Post $post): Response
+	public function update(UpdatePostRequest $request, Post $post): RedirectResponse
 	{
 		$post->update($request->validated());
-		return response(status: 204);
+		return redirect()->route('posts.index');
 	}
 
 	/**
 	 * Destroy Post in database
 	 */
-	public function destroy(Post $post): Response
+	public function destroy(Post $post): RedirectResponse
 	{
 		$post->delete();
-		return response(status: 204);
+		return back();
 	}
-
-	// # [!] NOTE
-	// # If you are Redirecting the type should be: Illuminate\Http\RedirectResponse
-	// # example:
-	//
-	// public function destroy(Post $post): RedirectResponse
-	// {
-	// 	$post->delete();
-	// 	return redirect('posts'); //or return back();
-	// }
 }

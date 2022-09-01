@@ -32,8 +32,8 @@ class PostController extends Controller
 	 */
 	public function store(StorePostRequest $request): JsonResponse
 	{
-		Post::create($request->validated());
-		return response()->json(status: 201);
+		$post = Post::create($request->validated());
+		return response()->json($post, 201);
 	}
 
 	/**
