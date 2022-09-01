@@ -33,7 +33,7 @@ class PostController extends Controller
 	public function store(StorePostRequest $request): JsonResponse
 	{
 		Post::create($request->validated());
-		return response()->json(['message'=>'Post Successfuly Created!'], 201);
+		return response()->json(status: 201);
 	}
 
 	/**
@@ -42,7 +42,7 @@ class PostController extends Controller
 	public function update(UpdatePostRequest $request, Post $post): JsonResponse
 	{
 		$post->update($request->validated());
-		return response()->json(['message'=>'Post Successfuly Updated!'], 200);
+		return response()->json(status: 204);
 	}
 
 	/**
@@ -51,6 +51,6 @@ class PostController extends Controller
 	public function destroy(Post $post): JsonResponse
 	{
 		$post->delete();
-		return response()->json(['message'=>'Post Successfuly Deleted!'], 200);
+		return response()->json(status: 204);
 	}
 }

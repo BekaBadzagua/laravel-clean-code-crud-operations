@@ -41,7 +41,7 @@ class PostController extends Controller
 	public function store(StorePostRequest $request): Response
 	{
 		Post::create($request->validated());
-		return response(['message'=>'Post Successfuly Created!'], 201);
+		return response(status: 201);
 	}
 
 	/**
@@ -58,7 +58,7 @@ class PostController extends Controller
 	public function update(UpdatePostRequest $request, Post $post): Response
 	{
 		$post->update($request->validated());
-		return response(['message'=>'Post Successfuly Updated!'], 200);
+		return response(status: 204);
 	}
 
 	/**
@@ -67,7 +67,7 @@ class PostController extends Controller
 	public function destroy(Post $post): Response
 	{
 		$post->delete();
-		return response(['message'=>'Post Successfuly Deleted!'], 200);
+		return response(status: 204);
 	}
 
 	// # [!] NOTE
