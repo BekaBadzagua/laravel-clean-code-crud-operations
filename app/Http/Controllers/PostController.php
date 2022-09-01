@@ -16,7 +16,7 @@ class PostController extends Controller
 	public function index(): View
 	{
 		$posts = Post::all();
-		return view('posts.index', ['posts' => $posts]);
+		return view('posts-index', ['posts' => $posts]);
 	}
 
 	/**
@@ -24,7 +24,7 @@ class PostController extends Controller
 	 */
 	public function show(Post $post): View
 	{
-		return view('posts.show', ['post' => $post]);
+		return view('posts-show', ['post' => $post]);
 	}
 
 	/**
@@ -32,7 +32,7 @@ class PostController extends Controller
 	 */
 	public function create(): View
 	{
-		return view('posts.create');
+		return view('posts-create');
 	}
 
 	/**
@@ -41,7 +41,7 @@ class PostController extends Controller
 	public function store(StorePostRequest $request): RedirectResponse
 	{
 		Post::create($request->validated());
-		return redirect()->route('posts.index');
+		return redirect()->route('posts-index');
 	}
 
 	/**
@@ -49,7 +49,7 @@ class PostController extends Controller
 	 */
 	public function edit(Post $post): View
 	{
-		return view('posts.edit', ['post' => $post]);
+		return view('posts-edit', ['post' => $post]);
 	}
 
 	/**
@@ -58,7 +58,7 @@ class PostController extends Controller
 	public function update(UpdatePostRequest $request, Post $post): RedirectResponse
 	{
 		$post->update($request->validated());
-		return redirect()->route('posts.index');
+		return redirect()->route('posts-index');
 	}
 
 	/**
